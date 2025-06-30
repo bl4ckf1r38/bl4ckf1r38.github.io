@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Aplicar tema salvo antes da página carregar -->
+    <script>
+        if (localStorage.getItem('tema') === 'escuro') {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<body>
+    <form id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" autocomplete="username" required>
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+        <button type="submit">Login</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

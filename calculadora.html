@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Milhas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="logout">
+        <a href="index.html"><button>Logout</button></a>
+    </div>
+    <div class="theme-toggle">
+        <button id="toggleTheme" onclick="alternarTema()">🌙</button>
+    </div>
+
+    <div class="container">
+        <h1>Calculadora de Milhas</h1>
+
+        <label>Quantidade de Milhas:</label>
+        <input type="number" id="milhas">
+
+        <label>Valor do Milheiro (R$):</label>
+        <input type="number" id="milheiro" step="0.001">
+
+        <label>Valor das Taxas (R$):</label>
+        <input type="number" id="taxas" step="0.001">
+
+        <label>Adicionar 1%?</label>
+        <div class="radio-group">
+            <label class="radio-option">
+                <input type="radio" id="sim" name="percentual" value="sim">
+                Sim
+            </label>
+
+            <label class="radio-option">
+                <input type="radio" id="nao" name="percentual" value="nao" checked>
+                Não
+            </label>
+        </div>
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div id="resultado"></div>
+
+        <div id="diferencaMilhas" style="display:none;">
+            <h2>Houve diferença nas milhas?</h2>
+
+            <label>Nova Quantidade de Milhas:</label>
+            <input type="number" id="novaMilhagem">
+
+            <label>Novo Valor das Taxas (R$):</label>
+            <input type="number" id="novasTaxas" step="0.001">
+
+            <button onclick="calcularDiferenca()">Calcular Diferença</button>
+
+            <div id="resultadoDiferenca"></div>
+        </div>
+
+        <button id="btnResetar" onclick="resetar()" style="display:none;">Calcular Novamente</button>
+
+        <a href="historico.html">
+            <button>Ver Histórico</button>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

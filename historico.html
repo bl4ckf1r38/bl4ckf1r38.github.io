@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button id="toggleTheme" onclick="alternarTema()">🌙</button>
+    </div>
+
+    <div class="container">
+        <h1>Histórico de Cálculos</h1>
+        <ul id="listaHistorico"></ul>
+
+        <button id="btnLimpar">Limpar Histórico</button>
+
+        <a href="calculadora.html">
+            <button>Voltar</button>
+        </a>
+    </div>
+
+    <script>
+        // Alternar Tema
+        function alternarTema() {
+            document.body.classList.toggle('dark-mode');
+
+            let botao = document.getElementById('toggleTheme');
+            if (document.body.classList.contains('dark-mode')) {
+                botao.textContent = '☀️';
+                localStorage.setItem('tema', 'escuro');
+            } else {
+                botao.textContent = '🌙';
+                localStorage.setItem('tema', 'claro');
+            }
+        }
+
+        function carregarTema() {
+            let temaSalvo = localStorage.getItem('tema');
+            let botao = document.getElementById('toggleTheme');
+
+            if (temaSalvo === 'escuro') {
+                document.body.classList.add('dark-mode');
+                if (botao) botao.textContent = '☀️';
+            } else {
+                document.body.classList.remove('dark-mode');
+                if (botao) botao.textContent = '🌙';
+            }
+        }
+
+        carregarTema();
+
+        // Carregar Histórico
+        function carregarHistorico() {
+            let historico = JSON.parse(localStorage.getItem('historico')) || [];
+            let lista = document.getElementById('listaHistorico');
+
+            if (historico.length === 0) {
+                lista.innerHTML = '<li>Não há registros no histórico.</li>';
+            } else {
+                historico.forEach(item => {
+                    let li = document.createElement('li');
+                    li.textContent = item;
+                    lista.appendChild(li);
+                });
+            }
+        }
+
+        carregarHistorico();
+
+        // Limpar Histórico
+        document.getElementById('btnLimpar').addEventListener('click', function () {
+            if (confirm('Você tem certeza que deseja limpar o histórico?')) {
+                localStorage.removeItem('historico');
+                alert('Histórico limpo com sucesso!');
+                location.reload();
+            }
+        });
+    </script>
+</body>
+
+</html>
