@@ -129,6 +129,7 @@ body.dark-mode .theme-toggle button {
     position: fixed;
    top: 710px;
     right: 330px;
+    z-index: 999;
     
 }
 
