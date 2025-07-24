@@ -51,14 +51,14 @@ function calcularDiferenca() {
 
     let totalAnterior = parseFloat(document.getElementById('resultado').innerHTML.split('R$ ')[1]);
 
-    if (novaMilhagem > (totalAnterior / milheiro * 1000)) {
+    if (novoTotal > totalAnterior) {
         let valorComprador = novoTotal - totalAnterior;
         let valorVendedor = (novaMilhagem / 1000) * milheiro + novasTaxas;
 
-        resultadoTexto = `Valor a pagar pelo comprador: R$ ${valorComprador.toFixed(3)}<br> Novo valor de repasse: R$ ${valorVendedor.toFixed(3)}`;
+        resultadoTexto = `Comprador está devendo: R$ ${valorComprador.toFixed(3)}<br> Novo valor de repasse: R$ ${valorVendedor.toFixed(3)}`;
         salvarHistorico(`Diferença positiva | Comprador paga: R$ ${valorComprador.toFixed(3)} | Novo repasse: R$ ${valorVendedor.toFixed(3)}`);
     } else {
-        let valorReembolso = totalAnterior - novoTotal;
+        let valorReembolso = Math.abs(totalAnterior - novoTotal);
         let valorVendedor = (novaMilhagem / 1000) * milheiro + novasTaxas;
 
         resultadoTexto = `Valor a reembolsar ao comprador: R$ ${valorReembolso.toFixed(3)}<br> Novo valor de repasse: R$ ${valorVendedor.toFixed(3)}`;
